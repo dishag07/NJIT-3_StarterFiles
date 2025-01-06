@@ -20,6 +20,9 @@
 // FOR STEP 16, ADD THREE OF YOUR OWN FAVORITE MOVIES WITH METADATA TO THE END OF THE JSON FILE LIST
 */
 
+
+
+
 const vue_app = Vue.createApp({
       // This automatically imports your movies.json file and puts it into
       //   the variable: movies
@@ -30,70 +33,78 @@ const vue_app = Vue.createApp({
       },
       data() {
             return {
+                  title: "IMDB + Disha's Top 8 Movies",
+                  owner: "Disha",
+                  github: "https://github.com/KyleRabkin61",
                   // This holds your movies.json data.
                   movies: [],
                   /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
-                  title: "IMB + Liz's Top 8 Movies",
-                  owner: "Liz",
-                  repository: "https://github.com/lizreznik/NJIT-Project-2"
+
             }
       },
       methods: {
             /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
             getMonthText(dateArray) {
-                  const year = dateArray[0]
-                  let month = ""
+
+                  let year = dateArray[0];
+                  let day = dateArray[2];
                   switch (dateArray[1]) {
                         case 1:
-                              month = "January"
-                              break
+                              month = "January";
+                              break;
                         case 2:
-                              month = "February"
-                              break
+                              month = "February";
+                              break;
                         case 3:
-                              month = "March"
-                              break
+                              month = "March";
+                              break;
                         case 4:
-                              month = "April"
-                              break
+                              month = "April";
+                              break;
                         case 5:
-                              month = "May"
-                              break
+                              month = "May";
+                              break;
                         case 6:
-                              month = "June"
-                              break
+                              month = "June";
+                              break;
                         case 7:
-                              month = "July"
-                              break
+                              month = "July";
+                              break;
                         case 8:
-                              month = "August"
-                              break
+                              month = "August";
+                              break;
                         case 9:
-                              month = "September"
-                              break
+                              month = "September";
+                              break;
                         case 10:
-                              month = "October"
-                              break
+                              month = "October";
+                              break;
                         case 11:
-                              month = "November"
-                              break
+                              month = "November";
+                              break;
                         case 12:
-                              month = "December"
-                              break
+                              month = "December";
+                              break;
                   }
-                  return month + " " + dateArray[2] + ", " + dateArray[0]
+                  return `${month} ${day}, ${year}`
+                  
             },
             posterClick(index) {
-                  if (this.movies[index].posterindex > this.movies[index].posters.length - 2) {
-                        this.movies[index].posterindex = 0
-                  } else {
+
+                  if(this.movies[index].posterindex > this.movies[index].posters.length - 2) {
+                        this.movies[index].posterindex = 0;
+                  }else{
                         this.movies[index].posterindex++
                   }
+
             },
-            textTime(minutes) {
-                  let hours = Math.floor(minutes / 60)
-                  let min = minutes % 60
-                  return hours + ' hours, ' + min + ' minutes'
+            timeText(minutes) {
+
+                  let hrs = Math.floor(minutes / 60);
+                  let mins = minutes % 60;
+                  return `${hrs}h ${mins}m`
             }
       }
 })
+
+vue_app.mount("#vue_app")
